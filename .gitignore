@@ -33,3 +33,12 @@ local.properties
 
 # virtual machine crash logs
 hs_err_pid*
+
+# SQL Server Database files
+*.mdf
+*.ldf
+*.ndf
+
+
+# Database connection strings with passwords
+**/database.properties
