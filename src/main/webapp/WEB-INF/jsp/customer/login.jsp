@@ -4,9 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>ログイン - ジビエサイト</title>
 </head>
 <body>
-
 </body>
 </html>
