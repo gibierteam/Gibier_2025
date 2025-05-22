@@ -27,9 +27,9 @@ local.properties
 *.zip
 *.tar.gz
 
-# common and frame specific ignores (if still needed)
-/common/
-/frame/
+# common and frame specific ignores (コメントアウト)
+# /common/
+# /frame/
 
 # virtual machine crash logs
 hs_err_pid*
@@ -39,6 +39,8 @@ hs_err_pid*
 *.ldf
 *.ndf
 
-
 # Database connection strings with passwords
 **/database.properties
+
+# Database connection class (個人設定のため除外)
+src/main/java/common/DBClass.java
