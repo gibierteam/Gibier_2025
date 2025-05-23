@@ -5,8 +5,9 @@
          id="WebApp_ID" version="4.0">
   
   <display-name>GibierSubscription</display-name>
+  <description>ジビエ定期購入システム - チーム開発版</description>
   
-  <!-- 文字エンコーディングフィルター -->
+  <!-- ========== 文字エンコーディング設定 ========== -->
   <filter>
     <filter-name>CharacterEncodingFilter</filter-name>
     <filter-class>org.apache.catalina.filters.SetCharacterEncodingFilter</filter-class>
@@ -25,12 +26,23 @@
     <url-pattern>/*</url-pattern>
   </filter-mapping>
   
-  <!-- ウェルカムファイル設定（ログイン画面に直接遷移） -->
-  <welcome-file-list>
-    <welcome-file>login</welcome-file>
-  </welcome-file-list>
+  <!-- ========== 開発効率化フィルター ========== -->
+  <!-- キャッシュ無効化フィルター（CSS用のみ） -->
+  <filter>
+    <filter-name>NoCacheFilter</filter-name>
+    <filter-class>org.apache.catalina.filters.ExpiresFilter</filter-class>
+    <init-param>
+      <param-name>ExpiresByType text/css</param-name>
+      <param-value>access plus 0 seconds</param-value>
+    </init-param>
+  </filter>
   
-  <!-- エラーページ設定 -->
+  <filter-mapping>
+    <filter-name>NoCacheFilter</filter-name>
+    <url-pattern>*.css</url-pattern>
+  </filter-mapping>
+  
+  <!-- ========== エラーページ設定 ========== -->
   <error-page>
     <error-code>404</error-code>
     <location>/WEB-INF/jsp/common/error404.jsp</location>
@@ -41,9 +53,21 @@
     <location>/WEB-INF/jsp/common/error500.jsp</location>
   </error-page>
   
-  <!-- セッションタイムアウト設定（30分） -->
-  <session-config>
-    <session-timeout>30</session-timeout>
-  </session-config>
+  <error-page>
+    <error-code>403</error-code>
+    <location>/WEB-INF/jsp/common/error403.jsp</location>
+  </error-page>
+  
+  <!-- Java例外のエラーページ -->
+  <error-page>
+    <exception-type>java.lang.Exception</exception-type>
+    <location>/WEB-INF/jsp/common/error500.jsp</location>
+  </error-page>
+  
+  <!-- ========== MIME タイプ設定 ========== -->
+  <mime-mapping>
+    <extension>css</extension>
+    <mime-type>text/css</mime-type>
+  </mime-mapping>
   
 </web-app>
