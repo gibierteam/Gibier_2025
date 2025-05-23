@@ -44,3 +44,6 @@ hs_err_pid*
 
 # Database connection class (個人設定のため除外)
 src/main/java/common/DBClass.java
+
+.classpath
+.project
